@@ -23,8 +23,10 @@ const ColorList = ({ colors, updateColors }) => {
 
   const saveEdit = e => {
     e.preventDefault();
+    console.log(colorToEdit);
     axios()
-      .put(`http://localhost:5000/api/colors/${colorToEdit.id},colorToEdit`)
+      .put(`http://localhost:5000/api/colors/${colorToEdit.id}`, colorToEdit)
+      
       .then(response => {
         updateColors(
           colors.map(color =>
