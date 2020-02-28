@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 import styled from "styled-components";
-
+import { makeStyles } from "@material-ui/core/styles";
 
 const LoginStyles = styled.div`
   display: flex;
@@ -73,7 +73,7 @@ const Login = props => {
   function login(event) {
     event.preventDefault();
     axios
-      .post(`http:localhost:5000/api/login`, form)
+      .post(`http://localhost:5000/api/login`, form)
       .then(response => {
         localStorage.setItem("token", response.data.payload);
         props.history.push("/bubbles");
@@ -91,18 +91,18 @@ const Login = props => {
           <label htmlFor="username">
             Username
             <input
-              name="username"
-              type="text"
               value={form.username}
+              type="text"
+              name="username"
               onChange={handleInput}
             />
           </label>
           <label htmlFor="password">
             Password
             <input
-              name="password"
-              type="password"
               value={form.password}
+              type="password"
+              name="password"
               onChange={handleInput}
             />
           </label>

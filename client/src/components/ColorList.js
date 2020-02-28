@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import axios from "../auth";
 import AddColor from "./AddColor";
 
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import styled from "styled-components";
+
 const initialColor = {
   color: "",
   code: { hex: "" }
@@ -39,12 +43,12 @@ const ColorList = ({ colors, updateColors }) => {
   const deleteColor = color => {
     // make a delete request to delete this color
     axios()
-      .delete(`http:localhost:5000/api/colors/${color.id}`)
+      .delete(`http://localhost:5000/api/colors/${color.id}`)
       .then(response => {
         updateColors(colors.filter(color => color.id !== response.data));
       })
       .catch(error => {
-        console.log(error);
+        console.error(error);
       });
   };
 
